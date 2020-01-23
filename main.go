@@ -11,10 +11,10 @@ import (
 	"os"
 )
 
-const MainContainerAnnotation = "k8s-sidekiller.killmeplz.github.com/main-container"
+const MainContainerAnnotation = "k8s-job-sidekiller.killmeplz.github.com/main-container"
 
 var LoginMethod = os.Getenv("AUTH_METHOD")
-var Namespace = "petr" //os.Getenv("POD_NAMESPACE")
+var Namespace = os.Getenv("POD_NAMESPACE")
 var KubeConfig = kubeconfig(LoginMethod)
 
 func main() {
