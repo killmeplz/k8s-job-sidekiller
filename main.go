@@ -11,6 +11,8 @@ import (
 	"os"
 )
 
+
+
 const MainContainerAnnotation = "k8s-job-sidekiller.killmeplz.github.com/main-container"
 
 var LoginMethod = os.Getenv("AUTH_METHOD")
