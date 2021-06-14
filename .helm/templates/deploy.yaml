@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: {{ template "fullname" . }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+        logEnv: {{ .Values.logEnv }}
+        logTag: {{ .Values.logTag }}
+    spec:
+      containers:
+        - name: {{ template "fullname" . }}
+          image: killmeplz/k8s-job-sidekiller:latest
